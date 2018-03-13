@@ -5,11 +5,14 @@ Il s'agit des TP de la programmation scientifique pour la mécanique.
 Le programme appelé "<samp>nbentiersimpairs</samp>" demande à l'utilisateur de saisir au clavier des entiers non nuls. Il arrête la saisie quand l'utilisateur entre 0 au clavier. Il affiche ensuite le nombre d'entiers impairs entrés précédemment par l'utilisateur. 
 
 Pour compiler:
-```
+
+```shell
 g95 -o nbentiersimpairs nbentiersimpairs.f90
 ```
+
 Pour éxecuter:
-```
+
+```shell
 ./nbentiersimpairs
 ```
 
@@ -35,11 +38,13 @@ Le programme appelé "<samp>calc_simple</samp>" calcule et affiche le résultat 
 9: **Fin selon**
 
 Pour compiler:
-```
+
+```shell
 g95 -o calc_simple calc_simple.f90
 ```
 Pour éxecuter:
-```
+
+```shell
 ./calc_simple
 ```
 
@@ -60,11 +65,14 @@ Le programme
 - affiche le temps de chute et la portée (distance parcourue suivant *x*.)
 
 Pour compiler:
-```
+
+```shell
 g95 -o trajectoire trajectoire.f90
 ```
+
 Pour éxecuter:
-```
+
+```shell
 ./trajectoire
 ```
 
@@ -72,11 +80,14 @@ Pour éxecuter:
 Le programme appelé "<samp>tab_dyn</samp>" recherche le maximum des valeurs d'un tableau. Ces valeurs auront été entrées au clavier par l'utilisateur.
 
 Pour compiler:
-```
+
+```shell
 g95 -o tab_dyn tab_dyn.f90
 ```
+
 Pour éxecuter:
-```
+
+```shell
 ./tab_dyn
 ``` 
 
@@ -97,11 +108,14 @@ Le programme demande à l'utilisateur de saisir les *N* éléments des vecteurs 
 - La comparaison élément par élémént des deux vecteurs
 
 Pour compiler:
-```
+
+```shell
 g95 -o calculatrice2 calculatrice2.f90
 ```
+
 Pour éxecuter:
-```
+
+```shell
 ./calculatrice2
 ```
 
@@ -113,10 +127,51 @@ La méthode dite *siamoise* consiste à remplir le tableau en plaçant successiv
 Le programme principal demande à l'utilisateur de saisir l'ordre n du carré magique jusqu'à ce que l'utilisateur entre un entier impair strictement positif, alloue le tableau dynamique, le remplit et l'affiche. Dans le module, il y a deux fonctions et deux subroutines. 
 
 Pour compiler:
-```
+
+```shell
 g95 carremagique.f90 carre.90 -o carremagique 
 ``` 
+
 Pour éxecuter:
-```
+
+```shell
 ./carremagique
+```
+
+## Gestion d'un répertoire
+Nous informatisons la gestion d'un répertoire téléphonique, qui est constitué de fiches individuelles. Le répertoire contient au maximum 100 fiches. 
+
+Chaque type dérivé appelé <samp>FICHE</samp> possède les trois champs suivants:
+- le nom de l'individu (chaîne de caractères de longeur 50)
+- le prénom de l'individu (chaîne de caractères de longeur 50)
+- le numéro de téléphone (entier)
+
+Chaque type dérivé appelé <samp>REPERTOIRE</samp> contient:
+- un tableau <samp>tab_f</samp> de <samp>nb_f_max</samp> fiches
+- un entier <samp>nb_f_rem</samp> indiquant le nombre de fiches déjà remplies dans le répertoire qui est initialisé à zéro
+
+Les fiches remplies seront toujours placées au début du tableau <samp>tab_f</samp> du répertoire, c'est-à-dire que les <samp>nb_f_rem</samp> premiers enregistrements de <samp>tab_f</samp> contiennent toutes les fiches remplies.  
+
+#### Gestion d'un menu:
+Le program a le menu suivant:
+- **0 - Quitter**
+- **1 - Affichage du nombre de fiches disponibles:** Cette instruction affiche le nombre de fiches disponibles.
+- **2 - Saisie d'une fiche:** Cette instruction permet à un utilisateur de saisir une fiche (nom, prénom, numéro de téléphone).
+- **3 - Modification d'une fiche:** Cette instruction permet à l'utilisateur de modifier la fiche le numéro *i* si elle est déjà remplie.
+- **4 - Affichage du repertoire:** Cette instruction permet d'afficher le répertoire s'il n'est pas vide.
+- **5 - Echange de deux fichier:** Cette instruction permet d'échanger deux fiches dont les numéros sont fournis par l'utilisateur.
+- **6 - Suppression d'une fiche:** Cette instruction permet de supprimer une fiche dont le numéro est fourni par l'utilisateur. L'ensemble des fiches de numéro supérieur doit être décalé de manière à ce que le répertoire ne présente pas de trous.
+
+L'utilisateur saisit le chiffre correspondant à son choix. Le traitement s'effectue puis le menu set ré-affiché. Ce cycle est répété tant que le chiffre 0 n'est pas saisi. 
+
+Pour compiler:
+
+```shell
+g95 -o gestion_rep gestion_rep.f90
+``` 
+
+Pour éxecuter:
+
+```shell
+./gestion_rep
 ```
